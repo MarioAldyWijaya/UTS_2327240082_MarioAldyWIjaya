@@ -1,0 +1,60 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTS PAW</title>
+</head>
+<body>
+    
+    <h1>PERHITUNGAN THR</h1> 
+    
+    Nama : <input type="text" id="nama"><br> 
+    Gaji Pokok : <input type="number" id="gaji"><br>
+    Tunjangan Tetap : <input type="number" id="tunjangan"><br>
+    Masa Kerja (Bulan) : <input type="number" id="masakerja"><br><br>
+
+    <button onclick="hitung()">Proses</button>
+    <p id="tampil"></p>
+
+    <script> // 2327240082
+        function hitung(){
+            var nama = document.getElementById("nama").value;
+            var gaji = Number(document.getElementById("gaji").value);
+            var tunjangan = Number(document.getElementById("tunjangan").value);
+            var masakerja = Number(document.getElementById("masakerja").value);
+
+            var totalgaji = gaji + tunjangan;
+            var thr = 0
+            if(masakerja >= 12){
+                thr = totalgaji
+            } else{
+                thr = (masakerja/12)*totalgaji
+            }
+
+            var pph = 0
+            var pphs = "asasdas"
+            if (totalgaji <= 4500000){
+                pph = 1
+                pphs = "0%"
+            } else{
+                pph = 5
+                pphs = "5%"
+            }
+
+            var totalpembayaran = (totalgaji-(totalgaji*(pph/100)))+thr;
+
+
+            
+            document.getElementById("tampil").innerHTML =
+            "Nama = " + nama +"<br>"+ "Total Gaji = " + totalgaji +"<br>"+
+             "THR = " + thr +"<br>"+ "PPH = " + pphs +"<br>"+
+            "Total Pembayaran = " + totalpembayaran;
+
+            
+        }
+
+
+    </script>
+</body>
+</html>
